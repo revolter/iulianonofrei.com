@@ -118,6 +118,11 @@
     }
   }
 
+  abbr {
+    text-decoration-line: underline;
+    text-decoration-style: dotted;
+  }
+
   code {
     color: #859900;
 
