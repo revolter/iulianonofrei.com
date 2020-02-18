@@ -119,6 +119,7 @@
   }
 
   abbr {
+    font-variant: none;
     text-decoration-line: underline;
     text-decoration-style: dotted;
   }
