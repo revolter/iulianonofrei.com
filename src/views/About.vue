@@ -37,11 +37,6 @@
 </template>
 
 <style scoped lang="scss">
-  @mixin style($background-color, $text-color) {
-    background-color: $background-color;
-    color: $text-color;
-  }
-
   @mixin linear-gradient($from, $to) {
     background: $to;
     background: linear-gradient(to bottom, $from 0%,$to 100%);
