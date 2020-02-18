@@ -15,19 +15,19 @@
     "sourceMap": true,
     "strict": true,
     "target": "esnext",
-    "types": [
-      "webpack-env"
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext",
+      "scripthost"
     ],
     "paths": {
       "@/*": [
         "src/*"
       ]
     },
-    "lib": [
-      "esnext",
-      "dom",
-      "dom.iterable",
-      "scripthost"
+    "types": [
+      "webpack-env"
     ]
   },
   "include": [
