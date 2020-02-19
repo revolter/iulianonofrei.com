@@ -29,7 +29,7 @@
 
     get srcs () {
       const name = this.name;
-      let srcs = new Map<string, string>();
+      const srcs = new Map<string, string>();
 
       for (let density = 1; density <= 3; density++) {
         srcs.set(density + "x", require(`@/${LOGOS_BASE_PATH}/${name}/${name}@${density}x.png`));
