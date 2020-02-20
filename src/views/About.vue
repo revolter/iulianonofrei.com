@@ -135,11 +135,11 @@
 </style>
 
 <script lang="ts">
-  import moment from "moment";
+  import moment from 'moment';
   import { Component, Vue } from 'vue-property-decorator';
 
-  import CustomExternalLink from "@/components/CustomExternalLink.vue";
-  import TerminalCommand from "@/components/TerminalCommand.vue";
+  import CustomExternalLink from '@/components/CustomExternalLink.vue';
+  import TerminalCommand from '@/components/TerminalCommand.vue';
 
   @Component({
     components: {
@@ -152,7 +152,7 @@
       const
         birthDate = moment([1992, 6 - 1, 14]),
         currentDate = moment(),
-        age = currentDate.diff(birthDate, "years", true).toFixed(3);
+        age = currentDate.diff(birthDate, 'years', true).toFixed(3);
 
       return age;
     }

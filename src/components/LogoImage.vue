@@ -11,7 +11,7 @@
 <script lang="ts">
   import { Component, Prop, Vue } from 'vue-property-decorator';
 
-  const LOGOS_BASE_PATH = "assets/images/logos";
+  const LOGOS_BASE_PATH = 'assets/images/logos';
 
   @Component
   export default class LogoImage extends Vue {
@@ -22,7 +22,7 @@
       default: function (this: LogoImage) {
         const name = this.name;
 
-        return name.charAt(0).toUpperCase() + name.substr(1) + " logo";
+        return name.charAt(0).toUpperCase() + name.substr(1) + ' logo';
       }
     })
     public alt!: string;
@@ -32,7 +32,7 @@
       const srcs = new Map<string, string>();
 
       for (let density = 1; density <= 3; density++) {
-        srcs.set(density + "x", require(`@/${LOGOS_BASE_PATH}/${name}/${name}@${density}x.png`));
+        srcs.set(density + 'x', require(`@/${LOGOS_BASE_PATH}/${name}/${name}@${density}x.png`));
       }
 
       return srcs;
@@ -41,11 +41,11 @@
     get srcset () {
       const srcset = Array.from(this.srcs, ([density, src]) => `${src} ${density}`);
 
-      return srcset.join(", ");
+      return srcset.join(', ');
     }
 
     get src () {
-      return this.srcs.get("1x");
+      return this.srcs.get('1x');
     }
   }
 </script>
