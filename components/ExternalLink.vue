@@ -7,7 +7,9 @@
 
   @Component
   export default class ExternalLink extends Vue {
-    @Prop({required: true})
+    @Prop({
+      required: true
+    })
     public href!: string;
   }
 </script>

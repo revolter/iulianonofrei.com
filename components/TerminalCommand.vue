@@ -5,8 +5,8 @@
       <span class="dir">{{ dir }}</span>
     </div>
     <div class="lines">
-      <div class="line" v-for="index in lines" :key="index">
-        <slot :name="'line-' + index" v-if="lines.length > 1"></slot>
+      <div v-for="index in lines" :key="index" class="line">
+        <slot v-if="lines.length > 1" :name="'line-' + index"></slot>
         <slot v-else></slot>
       </div>
     </div>
@@ -72,6 +72,8 @@
 
       >span.time {
         @include prompt(white, #003541);
+
+        float: left;
       }
 
       >span.dir {
@@ -110,14 +112,18 @@
 
   @Component
   export default class TerminalCommand extends Vue {
-    @Prop({required: true})
+    @Prop({
+      required: true
+    })
     public time!: string;
 
-    @Prop({required: true})
+    @Prop({
+      required: true
+    })
     public dir!: string;
 
     @Prop({
-      default: function () {
+      default () {
         return [1];
       }
     })

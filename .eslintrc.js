@@ -1,18 +1,51 @@
 module.exports = {
   root: true,
   env: {
+    browser: true,
     node: true
   },
-  'extends': [
-    'plugin:vue/essential',
-    'eslint:recommended',
-    '@vue/typescript/recommended'
-  ],
   parserOptions: {
-    ecmaVersion: 2020
+    parser: '@typescript-eslint/parser'
   },
+  plugins: [
+    '@typescript-eslint'
+  ],
+  extends: [
+    '@nuxtjs',
+    'plugin:nuxt/recommended'
+  ],
   rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
-  }
+    "one-var": [
+      "error",
+      "always"
+    ],
+    "semi": [
+      "error",
+      "always"
+    ],
+    "vue/html-self-closing": [
+      "error", {
+        "html": {
+          "normal": "never"
+        }
+      }
+    ],
+    "vue/script-indent": [
+      "error",
+      2, {
+        "baseIndent": 1
+      }
+    ],
+    "vue/singleline-html-element-content-newline": [
+      "error", {
+        "ignores": ["template"]
+      }
+    ]
+  },
+  overrides: [{
+    "files": ["*.vue"],
+    "rules": {
+      "indent": "off"
+    }
+  }]
 }

@@ -2,9 +2,7 @@
   <div class="about">
     <div class="terminal">
       <div class="bar">
-        <div class="close"></div>
-        <div class="minimize"></div>
-        <div class="maximize"></div>
+        <div class="close"></div><div class="minimize"></div><div class="maximize"></div>
         <span class="title">iulianOnofrei</span>
       </div>
       <div class="content">
@@ -137,20 +135,19 @@
 <script lang="ts">
   import moment from 'moment';
   import { Component, Vue } from 'vue-property-decorator';
-  import VueMeta from 'vue-meta';
 
   import CustomExternalLink from '@/components/CustomExternalLink.vue';
   import TerminalCommand from '@/components/TerminalCommand.vue';
-
-  Vue.use(VueMeta);
 
   @Component({
     components: {
       CustomExternalLink,
       TerminalCommand
     },
-    metaInfo: {
-      title: 'Iulian Onofrei | About'
+    head () {
+      return {
+        title: 'Iulian Onofrei | About'
+      };
     }
   })
   export default class About extends Vue {

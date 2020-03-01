@@ -1,14 +1,13 @@
 {
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
+    "allowJs": true,
     "baseUrl": ".",
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
-    "importHelpers": true,
-    "jsx": "preserve",
     "module": "esnext",
     "moduleResolution": "node",
+    "noEmit": true,
     "noImplicitReturns": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
@@ -17,26 +16,22 @@
     "target": "esnext",
     "lib": [
       "dom",
-      "dom.iterable",
       "esnext",
-      "scripthost"
+      "esnext.asynciterable"
     ],
     "paths": {
+      "~/*": [
+        "./*"
+      ],
       "@/*": [
-        "src/*"
+        "./*"
       ]
     },
     "types": [
-      "webpack-env"
+      "@nuxt/types",
+      "@types/node"
     ]
   },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
-    "tests/**/*.ts",
-    "tests/**/*.tsx"
-  ],
   "exclude": [
     "node_modules"
   ]

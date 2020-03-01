@@ -7,12 +7,12 @@
     <external-link href="https://mondly.com" :class="type">Mondly</external-link>{{ " " }}<logo-image :name="type" />
   </span>
 
-  <external-link href="https://fastlane.tools" v-else-if="type == 'fastlane'"><em>{{ type }}</em></external-link>
+  <external-link v-else-if="type == 'fastlane'" href="https://fastlane.tools"><em>{{ type }}</em></external-link>
   <span v-else-if="type == 'fastlane-team'">
     <external-link href="https://docs.fastlane.tools#fastlane-team" class="fastlane">team</external-link>{{ " " }}<logo-image name="fastlane" alt="fastlane logo" />
   </span>
 
-  <external-link href="http://sqlitebrowser.org" v-else-if="type == 'db4s'">DB Browser for SQLite</external-link>
+  <external-link v-else-if="type == 'db4s'" href="http://sqlitebrowser.org">DB Browser for SQLite</external-link>
   <span v-else-if="type == 'db4s-org'">
     <external-link href="https://github.com/orgs/sqlitebrowser/people" class="db4s">organization</external-link>{{ " " }}<logo-image name="db4s" alt="DB Browser for SQLite logo" />
   </span>
@@ -78,7 +78,9 @@
     }
   })
   export default class CustomExternalLink extends Vue {
-    @Prop({required: true})
+    @Prop({
+      required: true
+    })
     public type!: string;
   }
 </script>
