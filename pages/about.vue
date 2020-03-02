@@ -53,7 +53,7 @@
       margin: 0 auto;
 
       text-align: left;
-      border-radius: 10px;
+      border-radius: 4px;
       border: 0.5px solid rgba(0, 0, 0, 0.65);
       box-shadow: 0 18px 50px rgba(0, 0, 0, 0.52);
 
