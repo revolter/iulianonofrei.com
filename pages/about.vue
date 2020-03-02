@@ -49,6 +49,8 @@
     .terminal {
       position: relative;
       background-color: #002834;
+      max-width: 800px;
+      margin: 0 auto;
 
       text-align: left;
       border-radius: 10px;
