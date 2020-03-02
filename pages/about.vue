@@ -66,7 +66,8 @@
         height: 100%;
 
         border-radius: inherit;
-        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+        box-sizing: border-box;
+        border: 1px solid rgba(255, 255, 255, 0.15);
         pointer-events: none;
       }
 
