@@ -121,9 +121,20 @@
   }
 
   abbr {
-    font-variant: none;
-    text-decoration-line: underline;
-    text-decoration-style: dotted;
+    @media (hover: hover) {
+      &[title] {
+        font-variant: none;
+        text-decoration-line: underline;
+        text-decoration-style: dotted;
+        cursor: help;
+      }
+    }
+
+    @media (hover: none) {
+      &[title]:after {
+        content: " (" attr(title) ")";
+      }
+    }
   }
 
   code {
