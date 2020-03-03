@@ -30,7 +30,6 @@
       @include style($background-color, $text-color);
 
       &:after {
-        // @include style($background-color, $text-color);
         @include style(inherit, inherit);
       }
     }
