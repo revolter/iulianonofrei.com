@@ -1,131 +1,131 @@
 <template>
-  <div class="command">
-    <div class="prompt">
-      <span class="time">{{ time }}</span>
-      <span class="dir">{{ dir }}</span>
+    <div class="command">
+        <div class="prompt">
+            <span class="time">{{ time }}</span>
+            <span class="dir">{{ dir }}</span>
+        </div>
+        <div class="lines">
+            <div v-for="index in lines" :key="index" class="line">
+                <slot v-if="lines.length > 1" :name="'line-' + index"></slot>
+                <slot v-else></slot>
+            </div>
+        </div>
     </div>
-    <div class="lines">
-      <div v-for="index in lines" :key="index" class="line">
-        <slot v-if="lines.length > 1" :name="'line-' + index"></slot>
-        <slot v-else></slot>
-      </div>
-    </div>
-  </div>
 </template>
 
 <style scoped lang="scss">
-  @mixin style($background-color, $text-color) {
-    background-color: $background-color;
-    color: $text-color;
-  }
-
-  .command {
-    $prompt-normal-margin: 0.4em;
-    $prompt-small-margin: $prompt-normal-margin / 2;
-
-    $separator-width: 0.34375em;
-    $bug-margin: 0.04em;
-
-    @mixin prompt($background-color, $text-color) {
-      @include style($background-color, $text-color);
-
-      &:after {
-        @include style(inherit, inherit);
-      }
+    @mixin style($background-color, $text-color) {
+        background-color: $background-color;
+        color: $text-color;
     }
 
-    margin: 5px;
+    .command {
+        $prompt-normal-margin: 0.4em;
+        $prompt-small-margin: $prompt-normal-margin / 2;
 
-    .prompt {
-      margin-bottom: $prompt-small-margin;
+        $separator-width: 0.34375em;
+        $bug-margin: 0.04em;
 
-      &:not(:first-child) {
-        margin-top: $prompt-small-margin;
-      }
+        @mixin prompt($background-color, $text-color) {
+            @include style($background-color, $text-color);
 
-      >span {
-        padding-right: $prompt-normal-margin;
-      }
+            &:after {
+                @include style(inherit, inherit);
+            }
+        }
 
-      >span:first-child {
-        padding-left: $prompt-normal-margin;
-      }
+        margin: 5px;
 
-      >span:not(:first-child) {
-        padding-left: $prompt-normal-margin * 2;
-      }
+        .prompt {
+            margin-bottom: $prompt-small-margin;
 
-      >span:after {
-        content: "";
-        display: inline-block;
+            &:not(:first-child) {
+                margin-top: $prompt-small-margin;
+            }
 
-        width: $separator-width;
-        height: 1.375em;
+            >span {
+                padding-right: $prompt-normal-margin;
+            }
 
-        margin-left: $prompt-normal-margin;
-        margin-right: - ($separator-width + $prompt-normal-margin) + $bug-margin;
-        margin-bottom: -0.37em;
+            >span:first-child {
+                padding-left: $prompt-normal-margin;
+            }
 
-        clip-path: polygon(0 0, 0 100%, 100% 50%);
-      }
+            >span:not(:first-child) {
+                padding-left: $prompt-normal-margin * 2;
+            }
 
-      >span.time {
-        @include prompt(white, #003541);
+            >span:after {
+                content: "";
+                display: inline-block;
 
-        float: left;
-      }
+                width: $separator-width;
+                height: 1.375em;
 
-      >span.dir {
-        @include prompt(#278bd2, white);
-      }
+                margin-left: $prompt-normal-margin;
+                margin-right: - ($separator-width + $prompt-normal-margin) + $bug-margin;
+                margin-bottom: -0.37em;
+
+                clip-path: polygon(0 0, 0 100%, 100% 50%);
+            }
+
+            >span.time {
+                @include prompt(white, #003541);
+
+                float: left;
+            }
+
+            >span.dir {
+                @include prompt(#278bd2, white);
+            }
+        }
+
+        .line {
+            %placeholder-text {
+                display: inline-block;
+
+                color: #586e75;
+            }
+
+            &:first-child:before {
+                @extend %placeholder-text;
+
+                content: ">";
+
+                margin-right: $prompt-small-margin;
+            }
+
+            &:not(:last-child):after {
+                @extend %placeholder-text;
+
+                content: "\\";
+
+                margin-left: $prompt-small-margin;
+            }
+        }
     }
-
-    .line {
-      %placeholder-text {
-        display: inline-block;
-
-        color: #586e75;
-      }
-
-      &:first-child:before {
-        @extend %placeholder-text;
-
-        content: ">";
-
-        margin-right: $prompt-small-margin;
-      }
-
-      &:not(:last-child):after {
-        @extend %placeholder-text;
-
-        content: "\\";
-
-        margin-left: $prompt-small-margin;
-      }
-    }
-  }
 </style>
 
 <script lang="ts">
-  import { Component, Prop, Vue } from 'vue-property-decorator';
+    import { Component, Prop, Vue } from 'vue-property-decorator';
 
-  @Component
-  export default class TerminalCommand extends Vue {
-    @Prop({
-      required: true
-    })
-    public time!: string;
+    @Component
+    export default class TerminalCommand extends Vue {
+        @Prop({
+            required: true
+        })
+        public time!: string;
 
-    @Prop({
-      required: true
-    })
-    public dir!: string;
+        @Prop({
+            required: true
+        })
+        public dir!: string;
 
-    @Prop({
-      default () {
-        return [1];
-      }
-    })
-    public lines!: Array<number>;
-  }
+        @Prop({
+            default () {
+                return [1];
+            }
+        })
+        public lines!: Array<number>;
+    }
 </script>
