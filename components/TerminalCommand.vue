@@ -1,8 +1,7 @@
 <template>
     <div class="command">
         <div class="prompt">
-            <span class="time">{{ time }}</span>
-            <span class="dir">{{ dir }}</span>
+            <span class="time">{{ time }}</span><span class="dir">{{ dir }}</span>
         </div>
         <div class="lines">
             <div v-for="index in lines" :key="index" class="line">
@@ -24,7 +23,7 @@
         $prompt-small-margin: $prompt-normal-margin / 2;
 
         $separator-width: 0.34375em;
-        $bug-margin: 0.04em;
+        $bug-margin: 0.3px;
 
         @mixin prompt($background-color, $text-color) {
             @include style($background-color, $text-color);
@@ -44,6 +43,7 @@
             }
 
             >span {
+                position: relative;
                 padding-right: $prompt-normal-margin;
             }
 
@@ -57,22 +57,18 @@
 
             >span:after {
                 content: "";
-                display: inline-block;
+                position: absolute;
 
                 width: $separator-width;
-                height: 1.375em;
-
-                margin-left: $prompt-normal-margin;
-                margin-right: - ($separator-width + $prompt-normal-margin) + $bug-margin;
-                margin-bottom: -0.37em;
+                height: 100%;
+                right: calc(#{$bug-margin} - #{$separator-width});
 
                 clip-path: polygon(0 0, 0 100%, 100% 50%);
+                z-index: 1;
             }
 
             >span.time {
                 @include prompt(white, #003541);
-
-                float: left;
             }
 
             >span.dir {
