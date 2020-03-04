@@ -9,8 +9,9 @@
 </template>
 
 <style lang="scss">
-    html {
+    html, body {
         background-color: #2d2d2d;
+        margin: 0;
     }
 
     #app {
