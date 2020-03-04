@@ -41,10 +41,14 @@
     }
 
     .about {
+        $padding: 10px;
+
         color: #839496;
 
         font-size: 1.5em;
         font-weight: bold;
+
+        padding: 0 $padding $padding $padding;
 
         .terminal {
             position: relative;
