@@ -15,6 +15,8 @@
     }
 
     #app {
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+
         font-family: Avenir, Helvetica, Arial, sans-serif;
         color: #9eb3c9;
         text-align: center;
