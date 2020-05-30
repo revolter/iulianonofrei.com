@@ -1,4 +1,4 @@
-# iulianonofrei.com
+# <img src="/static/icons/favicon-32x32.png" width="28"/> iulianonofrei.com
 
 > Iulian Onofrei's personal website
 
