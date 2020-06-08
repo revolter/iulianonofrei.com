@@ -1,11 +1,8 @@
 <template>
     <div class="about">
-        <div class="terminal">
-            <div class="bar">
-                <div class="close"></div><div class="minimize"></div><div class="maximize"></div>
-                <span class="title">iulianOnofrei</span>
-            </div>
-            <div class="content">
+        <mac-window>
+            <template v-slot:title>iulianOnofrei</template>
+            <template v-slot:content>
                 <terminal-command time="I" dir="am">
                     <template><abbr title="Yet Another Developer">YAD</abbr>{{ " " }}<code>name</code>d Iulian Onofrei 💻</template>
                 </terminal-command>
@@ -29,17 +26,12 @@
                     <template slot="line-3"><custom-external-link type="stackoverflow" /></template>
                     <template slot="line-4"><custom-external-link type="linkedin" /></template>
                 </terminal-command>
-            </div>
-        </div>
+            </template>
+        </mac-window>
     </div>
 </template>
 
 <style scoped lang="scss">
-    @mixin linear-gradient($from, $to) {
-        background: $to;
-        background: linear-gradient(to bottom, $from 0%,$to 100%);
-    }
-
     .about {
         $padding: 10px;
 
@@ -49,79 +41,6 @@
         font-weight: bold;
 
         padding: 0 $padding $padding $padding;
-
-        .terminal {
-            position: relative;
-            background-color: #002834;
-            max-width: 800px;
-            margin: 0 auto;
-
-            text-align: left;
-            border-radius: 4px;
-            border: 0.5px solid rgba(0, 0, 0, 0.65);
-            box-shadow: 0 18px 50px rgba(0, 0, 0, 0.52);
-
-            overflow: hidden;
-
-            &:before {
-                content: "";
-
-                position: absolute;
-                width: 100%;
-                height: 100%;
-
-                border-radius: inherit;
-                box-sizing: border-box;
-                border: 1px solid rgba(255, 255, 255, 0.15);
-                pointer-events: none;
-            }
-
-            .bar {
-                @include linear-gradient(#434549, #37383b);
-                line-height: 0;
-
-                %bar-icon {
-                    $margin: 10px;
-                    $size: 12px;
-
-                    display: inline-block;
-                    margin: $margin 0 $margin $margin;
-
-                    width: $size;
-                    height: $size;
-
-                    border-radius: $size / 2;
-                }
-
-                .close {
-                    @extend %bar-icon;
-
-                    background-color: #ff6259;
-                }
-
-                .minimize {
-                    @extend %bar-icon;
-
-                    background-color: #ffbd2e;
-                }
-
-                .maximize {
-                    @extend %bar-icon;
-
-                    background-color: #28ca42;
-                }
-
-                .title {
-                    position: absolute;
-                    top: 0;
-                    left: 50%;
-                    transform: translateX(-50%);
-
-                    color: #b8b9bc;
-                    line-height: normal;
-                }
-            }
-        }
     }
 
     abbr {
@@ -156,11 +75,13 @@
     import { Component, Vue } from 'vue-property-decorator';
 
     import CustomExternalLink from '@/components/CustomExternalLink.vue';
+    import MacWindow from '@/components/MacWindow.vue';
     import TerminalCommand from '@/components/TerminalCommand.vue';
 
     @Component({
         components: {
             CustomExternalLink,
+            MacWindow,
             TerminalCommand
         },
         head () {
