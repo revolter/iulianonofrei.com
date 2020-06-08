@@ -1,8 +1,9 @@
 <template>
     <div class="window">
         <div class="bar">
-            <div class="close"></div><div class="minimize"></div><div class="maximize"></div>
-            <span class="title"><slot name="title"></slot></span>
+            <div class="close left"></div><div class="minimize left"></div><div class="maximize left"></div>
+            <div class="title"><slot name="title"></slot></div>
+            <div class="close right placeholder"></div><div class="minimize right placeholder"></div><div class="maximize right placeholder"></div>
         </div>
         <div class="content">
             <slot name="content"></slot>
@@ -18,8 +19,6 @@
 
     .window {
         position: relative;
-        background-color: #002834;
-        max-width: 800px;
         margin: 0 auto;
 
         text-align: left;
@@ -44,14 +43,31 @@
 
         .bar {
             @include linear-gradient(#434549, #37383b);
+            display: flex;
+            border-bottom: 1px solid #000;
+
             line-height: 0;
 
             %bar-icon {
+                flex-shrink: 0;
                 $margin: 10px;
                 $size: 12px;
 
-                display: inline-block;
-                margin: $margin 0 $margin $margin;
+                &.left {
+                    margin: $margin $margin $margin 0;
+
+                    &:first-child {
+                        margin-left: $margin;
+                    }
+                }
+
+                &.right {
+                    margin: $margin 0 $margin $margin;
+
+                    &:last-child {
+                        margin-right: $margin;
+                    }
+                }
 
                 width: $size;
                 height: $size;
@@ -77,14 +93,22 @@
                 background-color: #28ca42;
             }
 
+            .placeholder {
+                visibility: hidden;
+            }
+
             .title {
-                position: absolute;
-                top: 0;
-                left: 50%;
-                transform: translateX(-50%);
+                flex-grow: 1;
+                min-width: 0;
 
                 color: #b8b9bc;
+                text-align: center;
                 line-height: normal;
+
+                & span {
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
             }
         }
     }

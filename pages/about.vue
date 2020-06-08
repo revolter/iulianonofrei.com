@@ -1,6 +1,6 @@
 <template>
     <div class="about">
-        <mac-window>
+        <mac-window class="terminal-window">
             <template v-slot:title>iulianOnofrei</template>
             <template v-slot:content>
                 <terminal-command time="I" dir="am">
@@ -28,6 +28,20 @@
                 </terminal-command>
             </template>
         </mac-window>
+
+        <mac-window class="preview-window">
+            <template v-slot:title>
+                <div class="preview-window-title">
+                    <img alt="JPEG logo" src="@/static/images/logos/JPEG/JPEG@1x.png" srcset="@/static/images/logos/JPEG/JPEG@1x.png 1x, @/static/images/logos/JPEG/JPEG@2x.png 2x, @/static/images/logos/JPEG/JPEG@3x.png 3x">
+                    <span alt="IMG_696f.jpeg">IMG_696f.jpeg</span>
+                </div>
+            </template>
+            <template v-slot:content>
+                <div class="preview-window-image">
+                    <img alt="Digital Portrait" src="@/static/images/digital_portrait/digital_portrait@1x.png" srcset="@/static/images/digital_portrait/digital_portrait@1x.png 1x, @/static/images/digital_portrait/digital_portrait@2x.png 2x, @/static/images/digital_portrait/digital_portrait@3x.png 3x">
+                </div>
+            </template>
+        </mac-window>
     </div>
 </template>
 
@@ -41,32 +55,63 @@
         font-weight: bold;
 
         padding: 0 $padding $padding $padding;
-    }
 
-    abbr {
-        @media (hover: hover) {
-            &[title] {
-                font-variant: none;
-                text-decoration-line: underline;
-                text-decoration-style: dotted;
-                cursor: help;
+        .terminal-window {
+            background-color: #002834;
+            max-width: 800px;
+
+            abbr {
+                @media (hover: hover) {
+                    &[title] {
+                        font-variant: none;
+                        text-decoration-line: underline;
+                        text-decoration-style: dotted;
+                        cursor: help;
+                    }
+                }
+
+                @media (hover: none) {
+                    &[title]:after {
+                        content: " (" attr(title) ")";
+                    }
+                }
+            }
+
+            code {
+                color: #859900;
+
+                font-size: 1.23077em;
+                border-radius: 0.2em;
+                padding: 0 0.1em;
+                word-break: keep-all;
             }
         }
 
-        @media (hover: none) {
-            &[title]:after {
-                content: " (" attr(title) ")";
+        .preview-window {
+            background-color: #323232;
+            max-width: 600px;
+            margin-top: 20px;
+
+            .preview-window-title {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                img {
+                    flex-shrink: 0;
+                    margin-right: 6px;
+                }
+            }
+
+            .preview-window-image {
+                text-align: center;
+
+                img {
+                    display: block;
+                    margin: 0 auto;
+                }
             }
         }
-    }
-
-    code {
-        color: #859900;
-
-        font-size: 1.23077em;
-        border-radius: 0.2em;
-        padding: 0 0.1em;
-        word-break: keep-all;
     }
 </style>
 
