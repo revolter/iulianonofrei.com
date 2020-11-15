@@ -10,7 +10,7 @@
                     <template>{{ age }} <code>year</code>s old 👨🏼‍💻</template>
                 </terminal-command>
                 <terminal-command time="Falling" dir="in love">
-                    <template>with <code><custom-external-link type="ruby" /></code></template>
+                    <template>with <code><custom-external-link type="ruby" /></code> and <code><custom-external-link type="swift" /></code></template>
                 </terminal-command>
                 <terminal-command time="Working" dir="as">
                     <template>an <code>iOS</code> developer at <custom-external-link type="mondly" /></template>

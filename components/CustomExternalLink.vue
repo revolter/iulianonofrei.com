@@ -2,6 +2,9 @@
     <span v-if="type == 'ruby'">
         <external-link href="https://www.ruby-lang.org">Ruby</external-link>{{ " " }}<logo-image :name="type" />
     </span>
+    <span v-else-if="type == 'swift'">
+        <external-link href="https://swift.org">Swift</external-link>{{ " " }}<logo-image :name="type" />
+    </span>
 
     <span v-else-if="type == 'mondly'">
         <external-link href="https://mondly.com" :class="type">Mondly</external-link>{{ " " }}<logo-image :name="type" />
